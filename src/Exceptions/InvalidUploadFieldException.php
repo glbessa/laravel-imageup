@@ -1,6 +1,6 @@
 <?php
 
-namespace QCod\ImageUp\Exceptions;
+namespace glbessa\ImageUp\Exceptions;
 
 class InvalidUploadFieldException extends \Exception
 {

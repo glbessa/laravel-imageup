@@ -1,6 +1,6 @@
 <?php
 
-namespace QCod\ImageUp;
+namespace glbessa\ImageUp;
 
 use Exception;
 use Illuminate\Contracts\Filesystem\Filesystem;
@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\Encoders\WebpEncoder;
 use Intervention\Image\Interfaces\EncoderInterface;
 use Intervention\Image\Laravel\Facades\Image;
-use QCod\ImageUp\Exceptions\InvalidUploadFieldException;
+use glbessa\ImageUp\Exceptions\InvalidUploadFieldException;
 
 trait HasImageUploads
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace QCod\ImageUp;
+namespace glbessa\ImageUp;
 
 use Illuminate\Support\ServiceProvider;
 
