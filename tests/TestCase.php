@@ -3,10 +3,8 @@
 namespace QCod\ImageUp\Tests;
 
 use Illuminate\Support\Facades\Route;
-use Orchestra\Database\ConsoleServiceProvider;
 use QCod\ImageUp\Tests\Models\User;
 use QCod\ImageUp\ImageUpServiceProvider;
-use Intervention\Image\ImageServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
@@ -40,7 +38,6 @@ abstract class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            ImageServiceProvider::class,
             ImageUpServiceProvider::class,
         ];
     }
@@ -52,7 +49,7 @@ abstract class TestCase extends OrchestraTestCase
     protected function getPackageAliases($app)
     {
         return [
-            'Image' => \Intervention\Image\Facades\Image::class
+            'Image' => \Intervention\Image\Laravel\Facades\Image::class
         ];
     }
 

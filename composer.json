@@ -1,5 +1,5 @@
 {
-    "name": "qcod/laravel-imageup",
+    "name": "glbessa/laravel-imageup",
     "description": "Auto Image upload, resize and crop for Laravel eloquent model using Intervention image",
     "homepage": "https://github.com/qcod/laravel-imageup",
     "type": "library",
@@ -17,6 +17,10 @@
         {
             "name": "Mohd Saqueib Ansari",
             "email": "saquibweb@gmail.com"
+        },
+        {
+            "name": "Gabriel Leite Bessa",
+            "email": "glbessa@glbessa.dev.br"
         }
     ],
     "require": {
@@ -32,18 +36,18 @@
     },
     "autoload": {
         "psr-4": {
-            "QCod\\ImageUp\\": "src/"
+            "glbessa\\ImageUp\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "QCod\\ImageUp\\Tests\\": "tests/"
+            "glbessa\\ImageUp\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "QCod\\ImageUp\\ImageUpServiceProvider"
+                "glbessa\\ImageUp\\ImageUpServiceProvider"
             ]
         }
     },
