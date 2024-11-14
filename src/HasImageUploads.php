@@ -9,7 +9,9 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Encoders\WebpEncoder;
+use Intervention\Image\Interfaces\EncoderInterface;
+use Intervention\Image\Laravel\Facades\Image;
 use QCod\ImageUp\Exceptions\InvalidUploadFieldException;
 
 trait HasImageUploads
@@ -293,6 +295,18 @@ trait HasImageUploads
     }
 
     /**
+     * Get image encoder
+     *
+     * @return EncoderInterface
+     */
+    protected function getImageUploadEncoder(): EncoderInterface
+    {
+        return property_exists($this, 'imageEncoder')
+            ? $this->imagesEncoder
+            : new WebpEncoder();
+    }
+
+    /**
      * Get html image tag for a field if image present
      *
      * @param  string|null  $field
@@ -510,7 +524,7 @@ trait HasImageUploads
      */
     public function resizeImage($imageFile, array $imageFieldOptions): \Intervention\Image\Image
     {
-        $image = Image::make($imageFile);
+        $image = Image::read($imageFile);
 
         // check if resize needed
         if (!$this->needResizing($imageFieldOptions)) {
@@ -594,6 +608,7 @@ trait HasImageUploads
     {
         // Trigger before save hook
         $this->triggerBeforeSaveHook($image);
+        $encoder = $this->getImageUploadEncoder();
 
         $imageQuality = Arr::get(
             $this->uploadFieldOptions,
@@ -605,7 +620,7 @@ trait HasImageUploads
 
         $this->getStorageDisk()->put(
             $imagePath,
-            (string) $image->encode(null, $imageQuality),
+            (string) $image->encode($encoder, $imageQuality),
             'public'
         );
 
@@ -613,7 +628,7 @@ trait HasImageUploads
         $this->triggerAfterSaveHook($image);
 
         // clean up
-        $image->destroy();
+        unset($image);
 
         return $imagePath;
     }
