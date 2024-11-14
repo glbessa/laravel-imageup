@@ -36,18 +36,18 @@
     },
     "autoload": {
         "psr-4": {
-            "glbessa\\ImageUp\\": "src/"
+            "QCod\\ImageUp\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "glbessa\\ImageUp\\Tests\\": "tests/"
+            "QCod\\ImageUp\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "glbessa\\ImageUp\\ImageUpServiceProvider"
+                "QCod\\ImageUp\\ImageUpServiceProvider"
             ]
         }
     },
